@@ -43,13 +43,18 @@ class LinkedList:
     # ------------------------------------------------------------------ #
     # TODO — Equipo A: rama feature/append                                #
     # ------------------------------------------------------------------ #
+    
     def append(self, data):
-        """Inserta un nuevo nodo al final de la lista.
+        """Agrega un nuevo nodo con el valor data al final de la lista."""
+        new_node = Node(data)
+        if self.head is None :
+            self.head = new_node
+            return
 
-        Args:
-            data: El valor a insertar.
-        """
-        raise NotImplementedError("Equipo A debe implementar append()")
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        current.next = new_node
 
 # ------------------------------------------------------------------ #
     # TODO — Equipo B: rama feature/delete                                #
