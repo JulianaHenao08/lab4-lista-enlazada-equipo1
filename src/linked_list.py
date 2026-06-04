@@ -43,27 +43,46 @@ class LinkedList:
     # ------------------------------------------------------------------ #
     # TODO — Equipo A: rama feature/append                                #
     # ------------------------------------------------------------------ #
+    
     def append(self, data):
-        """Inserta un nuevo nodo al final de la lista.
+        """Agrega un nuevo nodo con el valor data al final de la lista."""
+        new_node = Node(data)
+        if self.head is None :
+            self.head = new_node
+            return
 
-        Args:
-            data: El valor a insertar.
-        """
-        raise NotImplementedError("Equipo A debe implementar append()")
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        current.next = new_node
 
-    # ------------------------------------------------------------------ #
+# ------------------------------------------------------------------ #
     # TODO — Equipo B: rama feature/delete                                #
     # ------------------------------------------------------------------ #
     def delete(self, data):
-        """Elimina el primer nodo cuyo valor sea igual a data.
+        """Elimina el primer nodo cuyo valor sea igual a data."""
 
-        Args:
-            data: El valor a eliminar.
+        # Lista vacía
+        if self.head is None:
+            return False
 
-        Returns:
-            True si el nodo fue eliminado, False si no se encontró.
-        """
-        raise NotImplementedError("Equipo B debe implementar delete()")
+        # Eliminar el head
+        if self.head.data == data:
+            self.head = self.head.next
+            return True
+
+        # Buscar el nodo a eliminar
+        current = self.head
+
+        while current.next is not None:
+
+            if current.next.data == data:
+                current.next = current.next.next
+                return True
+
+            current = current.next
+
+        return False
 
     # ------------------------------------------------------------------ #
     # TODO — Equipo C: rama feature/search                                #
